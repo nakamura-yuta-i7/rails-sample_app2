@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   
   # 与えられた文字列のハッシュ値を返す
   def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_const ? BCrypt::Engine::MIN_COST : 
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : 
                               BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost)
+    BCrypt::Password.create(string, cost: cost)
   end
 end
